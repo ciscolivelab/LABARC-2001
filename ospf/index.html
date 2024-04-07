@@ -413,13 +413,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#note-if-you-dont-see-pre-configured-connections-check-view-connections" class="md-nav__link">
-     Note: If you don't see pre-configured connections, check View-Connections 
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -508,13 +501,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#note-if-you-dont-see-pre-configured-connections-check-view-connections" class="md-nav__link">
-     Note: If you don't see pre-configured connections, check View-Connections 
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -558,9 +544,9 @@
 <p>b. select <strong>Site300-Core-VPN10</strong> from the pre-configured Putty session</p>
 </li>
 </ol>
-<p><img alt="" src="../pic/1-5-2.png" /></p>
-<h2 id="note-if-you-dont-see-pre-configured-connections-check-view-connections"><span style="background-color:yellow"> Note: If you don't see pre-configured connections, check <strong>View-Connections</strong> </span></h2>
-<p>c. Login with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong> </p>
+<p><img alt="" src="../pic/1-5-2.png" /><br />
+<span style="background-color:yellow"> Note: If you don't see pre-configured connections, check <strong>View-Connections</strong> </span><br />
+   c. Log in with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong> </p>
 <p><img alt="" src="../pic/1-5-3.png" /></p>
 <p><strong>Note the redistributed routes are seen as E2 routes with default metric</strong></p>
 <ol>
@@ -572,17 +558,18 @@
 <p><img alt="" src="../pic/1-6-2.png" /></p>
 <p>c. To add the route policy into configuration. Navigate to <strong>Configuration &gt; Policies &gt;  Localized Policy </strong>,  select pre-configured policy <strong>Site300-Local-Policy-v1</strong> and Click the <strong>...</strong> ti Edit the policy. </p>
 <p><img alt="" src="../pic/1-6-3.png" /></p>
-<p>d. Select <strong>Route Policy</strong> then select <strong>Add Route Policy</strong> and <strong>Import Existing</strong> </p>
-<p>e. Select <strong>VIP18-Route-Policy</strong> from Policy drop-down, then <strong>Import</strong></p>
-<p><img alt="" src="../pic/1-6-4.png" /></p>
-<p>f. Click <strong>Save Policy Changes</strong> to push configuration <strong>Site300-cE1-v1</strong> </p>
-<p>g. Now, let's apply the Route Policy to OSPF. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates </strong></p>
-<p>h. Search feature template <strong>VIP18-OSPF-Neighbor</strong> and select <strong>Edit</strong></p>
-<p>i. Under <strong>REDISTRIBUTE</strong> section, click the Pencil icon to update <strong>omp</strong> redistritbuion setting</p>
-<p>j. Select <strong>Global</strong> from drop-down of <strong>Route Policy</strong>, and configure <strong>VIP18-Route-Policy</strong>. </p>
-<p><strong>Note Make sure to enter the name correctly</strong></p>
-<p><img alt="" src="../pic/1-6-5.png" /></p>
-<p>k. Save the template change and push configuration to <strong>Site300-cE1</strong> </p>
+<p>d. Select <strong>Route Policy</strong> then select <strong>Add Route Policy</strong> and <strong>Import Existing</strong><br />
+  e. Select <strong>VIP18-Route-Policy</strong> from Policy drop-down, then <strong>Import</strong><br />
+<img alt="" src="../pic/1-6-4.png" /><br />
+  f. Click <strong>Save Policy Changes</strong> to push configuration <strong>Site300-cE1-v1</strong><br />
+  g. Now, let's apply the Route Policy to OSPF. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates </strong><br />
+  h. Search feature template <strong>VIP18-OSPF-Neighbor</strong> and select <strong>Edit</strong><br />
+  i. Under <strong>REDISTRIBUTE</strong> section, click the Pencil icon to update <strong>omp</strong> redistritbuion setting<br />
+  j. Select <strong>Global</strong> from drop-down of <strong>Route Policy</strong>, and configure <strong>VIP18-Route-Policy</strong>.  </p>
+<p><strong>Note Make sure to enter the name correctly</strong><br />
+<img alt="" src="../pic/1-6-5.png" /><br />
+  k. Save the template change and push configuration to <strong>Site300-cE1</strong><br />
+  l. Log into <strong>Site300-Core-VPN10</strong> with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong>  </p>
 
 
 
