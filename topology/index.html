@@ -12,7 +12,7 @@
         <link rel="prev" href="../about/">
       
       
-        <link rel="next" href="../ospf/">
+        <link rel="next" href="../access/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
@@ -188,7 +188,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../access.md" class="md-tabs__link">
+    <a href="../access/" class="md-tabs__link">
       Lab Crendential
     </a>
   </li>
@@ -338,7 +338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../access.md" class="md-nav__link">
+      <a href="../access/" class="md-nav__link">
         Lab Crendential
       </a>
     </li>
@@ -408,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../control.md" class="md-nav__link">
+      <a href="../control/" class="md-nav__link">
         Centralized Policy - Hub&Spoke Topology
       </a>
     </li>
@@ -470,6 +470,30 @@
   <h1>Lab Topology</h1>
 
 <p><img alt="" src="../pic/2-1.png" /></p>
+<p>The lab topology includes:</p>
+<ul>
+<li>
+<p>On-prem controllers : One vManage, one vBond, and two vSmart</p>
+</li>
+<li>
+<p>Two central locations (Hub/DC) with redundant routers</p>
+</li>
+<li>
+<p>Two regular branch locations</p>
+</li>
+<li>
+<p>One regular branch location with redundant routers</p>
+</li>
+<li>
+<p>MPLS and Internet connectivity per site</p>
+</li>
+<li>
+<p>DCI connectivity between central locations</p>
+</li>
+<li>
+<p>Three VPN/VRF segments: corporate (VPN 10), IoT/PCI (VPN 11) and Guest (VPN 12)</p>
+</li>
+</ul>
 
 
 
@@ -512,13 +536,13 @@
         
         
           
-          <a href="../ospf/" class="md-footer__link md-footer__link--next" aria-label="Next: Localized Policy - OSPF" rel="next">
+          <a href="../access/" class="md-footer__link md-footer__link--next" aria-label="Next: Lab Crendential" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Localized Policy - OSPF
+                Lab Crendential
               </div>
             </div>
             <div class="md-footer__button md-icon">
