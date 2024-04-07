@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#task-2-qos-policy" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -393,9 +398,58 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Localized Policy - QoS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Localized Policy - QoS
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-2-qos-policy" class="md-nav__link">
+    Task 2 QoS Policy
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 2 QoS Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qos-acl" class="md-nav__link">
+    QoS ACL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qos-map" class="md-nav__link">
+    QoS Map
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -454,6 +508,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-2-qos-policy" class="md-nav__link">
+    Task 2 QoS Policy
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 2 QoS Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qos-acl" class="md-nav__link">
+    QoS ACL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qos-map" class="md-nav__link">
+    QoS Map
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -469,7 +558,50 @@
 
   <h1>Localized Policy - QoS</h1>
 
-
+<h2 id="task-2-qos-policy">Task 2 QoS Policy</h2>
+<p>In this task, you are going use localized policy to configure QoS classification, makring on sevice side and QoS Map policy on WAN interface. </p>
+<h3 id="qos-acl">QoS ACL</h3>
+<ol>
+<li>Reivew the pre-configured QoS ACL for traffic classiciation. The ACL is configured to classify traffic based on DSCP values 46, 48, 41, 10 (and 0, or NO DSCP) and distribute it into four classes.<br />
+  a. On vManage, navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Localized Policy &gt; Access Control Lists</strong><br />
+<img alt="" src="../pic/2-1-1.png" /><br />
+  b. Open <strong>VIP16_QoS_ACL</strong> in view mode.
+  <img alt="" src="../pic/2-1-2.png" /><br />
+<img alt="" src="../pic/2-1-3.png" />  </li>
+</ol>
+<h3 id="qos-map">QoS Map</h3>
+<ol>
+<li>
+<p>Review the QoS Map to be used for queue definition. Notice that it’s configured with four QoS queues (one LLQ and three WRR queue).<br />
+  a. On vManage, navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Localized Policy &gt; Forwarding Class/QoS</strong>
+  <img alt="" src="../pic/2-2-1.png" /><br />
+  b. Open <strong>VIP16_QoS_Map</strong> in view mode.<br />
+<img alt="" src="../pic/2-2-2.png" /><br />
+<img alt="" src="../pic/2-2-3.png" />  </p>
+</li>
+<li>
+<p>Attach QoS ACL and QoS Map to Localized Policy<br />
+  a. Navigate to <strong>Configuration &gt; Policies &gt; Localized Policy</strong>, add open <strong>Site300-Local-Policy-v1</strong> in Edit mode<br />
+<img alt="" src="../pic/2-3-1.png" /><br />
+  b. Import <strong>VIP16_QoS_Map</strong> QoS Map<br />
+<img alt="" src="../pic/2-3-2.png" /><br />
+  c. Import <strong>VIP16_QoS_ACL</strong> Access Control List Policy<br />
+<img alt="" src="../pic/2-3-3.png" /><br />
+  d. Save policy change to push configuration to <strong>SIte300-cE1</strong><br />
+  e. Repeat the steps to import QoS Map and QoS ACL to <strong>Site100-Local-Policy-v1</strong>  </p>
+</li>
+<li>
+<p>Apply QoS ACL to LAN-facing interfaces of <strong>Site100-cE1</strong> and <strong>Site300-cE1</strong>.<br />
+  a. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>. Type in <strong>Site100-cE1</strong> and <strong>Gigabitethernet3</strong> in the search bar.<br />
+  b. Open the interface feature template in Edit mode<br />
+<img alt="" src="../pic/2-4-1.png" /><br />
+  c. Scroll to the <strong>ACL/QoS </strong>section and configure <strong>VIP16_QoS_ACL</strong> as an ingress IPv4 ACL<br />
+<strong>Note make sure to enter the name correctly</strong><br />
+<img alt="" src="../pic/2-4-2.png" /><br />
+<img alt="" src="../pic/2-4-3.png" /><br />
+  d.    </p>
+</li>
+</ol>
 
 
 

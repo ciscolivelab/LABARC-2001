@@ -559,60 +559,46 @@
   <h1>Localized Policy - OSPF</h1>
 
 <h2 id="task-1-ospf-policy">Task 1 OSPF Policy</h2>
-<h3 id="set-ospf-metric">Set OSPF Metric</h3>
 <p>In this task, you are going use localized route policy to set OSPF metrics, and another route policy block default route. </p>
+<h3 id="set-ospf-metric">Set OSPF Metric</h3>
 <ol>
-<li>
-<p>In Site 300, OSPF is pre-configured between core router <strong>Site300-Core-VPN10</strong> and <strong>Site300-cE1</strong> on service side. Mutual redistribution beteen OMP and OSPF is also enabled. </p>
-</li>
-<li>
-<p>Verify the OSPF neighbor by navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; OSPF Neighbors</strong></p>
-</li>
-</ol>
-<p><img alt="" src="../pic/1-2-1.png" /></p>
-<ol>
-<li>Verify local route <strong>131.131.131.0/24</strong> is installed as OSPF route into the VPN 10 routing table. Navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; IP Route</strong></li>
-</ol>
-<p><img alt="" src="../pic/1-3-1.png" /></p>
-<ol>
-<li>Verify omp route <strong>131.131.131.0/24</strong> is installed on remote site. Navigate to <strong>Monitor &gt; Devices &gt; Site400-cE1 &gt; Real Time &gt; IP Route</strong></li>
-</ol>
-<p><img alt="" src="../pic/1-4-1.png" /></p>
-<ol>
-<li>
-<p>Verify omp routes being redistributed into OSPF and installed on <strong>Site300-Core-VPN10</strong> </p>
-<p>a. open <strong>mRemoteNG</strong> <img alt="" src="../pic/1-5-1.png" title="mRemoteNG" />from jumphost's desktop</p>
-<p>b. select <strong>Site300-Core-VPN10</strong> from the pre-configured Putty session</p>
-</li>
-</ol>
-<p><img alt="" src="../pic/1-5-2.png" /><br />
+<li>In Site 300, OSPF is pre-configured between core router <strong>Site300-Core-VPN10</strong> and <strong>Site300-cE1</strong> on service side. Mutual redistribution beteen OMP and OSPF is also enabled.  </li>
+<li>Verify the OSPF neighbor by navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; OSPF Neighbors</strong><br />
+<img alt="" src="../pic/1-2-1.png" />  </li>
+<li>Verify local route <strong>131.131.131.0/24</strong> is installed as OSPF route into the VPN 10 routing table. Navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; IP Route</strong><br />
+<img alt="" src="../pic/1-3-1.png" />  </li>
+<li>Verify omp route <strong>131.131.131.0/24</strong> is installed on remote site. Navigate to <strong>Monitor &gt; Devices &gt; Site400-cE1 &gt; Real Time &gt; IP Route</strong><br />
+<img alt="" src="../pic/1-4-1.png" />  </li>
+<li>Verify omp routes being redistributed into OSPF and installed on <strong>Site300-Core-VPN10</strong><br />
+    a. open <strong>mRemoteNG</strong> <img alt="" src="../pic/1-5-1.png" title="mRemoteNG" />from jumphost's desktop<br />
+    b. select <strong>Site300-Core-VPN10</strong> from the pre-configured Putty session<br />
+<img alt="" src="../pic/1-5-2.png" /><br />
 <span style="background-color:yellow"> Note: If you don't see pre-configured connections, check <strong>View-Connections</strong> </span><br />
-   c. Log in with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong> </p>
-<p><img alt="" src="../pic/1-5-3.png" /></p>
-<p><strong>Note the redistributed routes are seen as E2 routes with default metric</strong></p>
-<ol>
+   c. Log in with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong><br />
+<img alt="" src="../pic/1-5-3.png" /><br />
+<strong>Note the redistributed routes are seen as E2 routes with default metric</strong>  </li>
 <li>Add a Route Policy to set the OSPF metric of 1000 for prefixes redistributed from OMP
-  a. Navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Localized Policy &gt; Route Policy</strong></li>
-</ol>
-<p><img alt="" src="../pic/1-6-1.png" /></p>
-<p>b. Route Policy <strong>VIP18-Route-Policy</strong> is pre-configured to set OSPF metric to 1000. Click the <strong>...</strong> to view the policy setting.</p>
-<p><img alt="" src="../pic/1-6-2.png" /></p>
-<p>c. To add the route policy into configuration. Navigate to <strong>Configuration &gt; Policies &gt;  Localized Policy </strong>,  select pre-configured policy <strong>Site300-Local-Policy-v1</strong> and Click the <strong>...</strong> ti Edit the policy. </p>
-<p><img alt="" src="../pic/1-6-3.png" /></p>
-<p>d. Select <strong>Route Policy</strong> then select <strong>Add Route Policy</strong> and <strong>Import Existing</strong><br />
+  a. Navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Localized Policy &gt; Route Policy</strong><br />
+<img alt="" src="../pic/1-6-1.png" /><br />
+  b. Route Policy <strong>VIP18-Route-Policy</strong> is pre-configured to set OSPF metric to 1000. Click the <strong>...</strong> to view the policy setting.<br />
+<img alt="" src="../pic/1-6-2.png" /><br />
+  c. To add the route policy into configuration. Navigate to <strong>Configuration &gt; Policies &gt;  Localized Policy </strong>,  select pre-configured policy <strong>Site300-Local-Policy-v1</strong> and Click the <strong>...</strong> to Edit the policy.<br />
+<img alt="" src="../pic/1-6-3.png" /><br />
+  d. Select <strong>Route Policy</strong> then select <strong>Add Route Policy</strong> and <strong>Import Existing</strong><br />
   e. Select <strong>VIP18-Route-Policy</strong> from Policy drop-down, then <strong>Import</strong><br />
 <img alt="" src="../pic/1-6-4.png" /><br />
   f. Click <strong>Save Policy Changes</strong> to push configuration <strong>Site300-cE1-v1</strong><br />
   g. Now, let's apply the Route Policy to OSPF. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates </strong><br />
   h. Search feature template <strong>VIP18-OSPF-Neighbor</strong> and select <strong>Edit</strong><br />
   i. Under <strong>REDISTRIBUTE</strong> section, click the Pencil icon to update <strong>omp</strong> redistritbuion setting<br />
-  j. Select <strong>Global</strong> from drop-down of <strong>Route Policy</strong>, and configure <strong>VIP18-Route-Policy</strong>.  </p>
-<p><strong>Note Make sure to enter the name correctly</strong><br />
+  j. Select <strong>Global</strong> from drop-down of <strong>Route Policy</strong>, and configure <strong>VIP18-Route-Policy</strong>.<br />
+<strong>Note Make sure to enter the name correctly</strong><br />
 <img alt="" src="../pic/1-6-5.png" /><br />
   k. Save the template change and push configuration to <strong>Site300-cE1</strong><br />
   l. Log into <strong>Site300-Core-VPN10</strong> with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong><br />
 <img alt="" src="../pic/1-6-6.png" /><br />
-**Note Now the OSPF E2 route has OSPF matric 1000</p>
+**Note Now the OSPF E2 route has OSPF matric 1000</li>
+</ol>
 <h3 id="block-default-on-service-side">Block Default On Service Side</h3>
 <p>As show below <strong>Site300-Core-VPN10</strong> is incorrectly advertising default route to <strong>Site300-cE1</strong>. Next you are going to use local Route Policy to block default route from service side.<br />
 <img alt="" src="../pic/1-6-7.png" />  </p>
