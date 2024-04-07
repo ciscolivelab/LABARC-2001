@@ -415,8 +415,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#as-show-below-site300-core-vpn10-is-incorrectly-advertising-default-route-to-site300-ce1-next-you-are-going-to-use-local-route-policy-to-block-default-route-from-service-side" class="md-nav__link">
-    As show below Site300-Core-VPN10 is incorrectly advertising default route to Site300-cE1. Next you are going to use local Route Policy to block default route from service side.
+  <a href="#set-ospf-metric" class="md-nav__link">
+    Set OSPF Metric
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-default-on-service-side" class="md-nav__link">
+    Block Default On Service Side
   </a>
   
 </li>
@@ -516,8 +523,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#as-show-below-site300-core-vpn10-is-incorrectly-advertising-default-route-to-site300-ce1-next-you-are-going-to-use-local-route-policy-to-block-default-route-from-service-side" class="md-nav__link">
-    As show below Site300-Core-VPN10 is incorrectly advertising default route to Site300-cE1. Next you are going to use local Route Policy to block default route from service side.
+  <a href="#set-ospf-metric" class="md-nav__link">
+    Set OSPF Metric
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#block-default-on-service-side" class="md-nav__link">
+    Block Default On Service Side
   </a>
   
 </li>
@@ -545,6 +559,7 @@
   <h1>Localized Policy - OSPF</h1>
 
 <h2 id="task-1-ospf-policy">Task 1 OSPF Policy</h2>
+<h3 id="set-ospf-metric">Set OSPF Metric</h3>
 <p>In this task, you are going use localized route policy to set OSPF metrics, and another route policy block default route. </p>
 <ol>
 <li>
@@ -598,8 +613,9 @@
   l. Log into <strong>Site300-Core-VPN10</strong> with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong><br />
 <img alt="" src="../pic/1-6-6.png" /><br />
 **Note Now the OSPF E2 route has OSPF matric 1000</p>
-<h3 id="as-show-below-site300-core-vpn10-is-incorrectly-advertising-default-route-to-site300-ce1-next-you-are-going-to-use-local-route-policy-to-block-default-route-from-service-side">As show below <strong>Site300-Core-VPN10</strong> is incorrectly advertising default route to <strong>Site300-cE1</strong>. Next you are going to use local Route Policy to block default route from service side.</h3>
-<p><img alt="" src="../pic/1-6-7.png" />  </p>
+<h3 id="block-default-on-service-side">Block Default On Service Side</h3>
+<p>As show below <strong>Site300-Core-VPN10</strong> is incorrectly advertising default route to <strong>Site300-cE1</strong>. Next you are going to use local Route Policy to block default route from service side.<br />
+<img alt="" src="../pic/1-6-7.png" />  </p>
 <ol>
 <li>Navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Localized Policy &gt; Route Policy</strong><br />
   a. Click <strong>Add Route Policy</strong> to create new policy<br />
