@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#task-1-localized-ospf-policy" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -379,9 +384,38 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Localized Policy - OSPF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Localized Policy - OSPF
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-1-localized-ospf-policy" class="md-nav__link">
+    Task 1 Localized OSPF Policy
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -454,6 +488,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-1-localized-ospf-policy" class="md-nav__link">
+    Task 1 Localized OSPF Policy
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -469,7 +518,71 @@
 
   <h1>Localized Policy - OSPF</h1>
 
+<h2 id="task-1-localized-ospf-policy">Task 1 Localized OSPF Policy</h2>
+<p>In this task, you are going use localized route policy to set OSPF metrics, and another route policy block default route. </p>
+<ol>
+<li>
+<p>In Site 300, OSPF is pre-configured between core router <strong>Site300-Core-VPN10</strong> and <strong>Site300-cE1</strong> on service side. Mutual redistribution beteen OMP and OSPF is also enabled. </p>
+</li>
+<li>
+<p>Verify the OSPF neighbor by navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; OSPF Neighbors</strong></p>
+</li>
+</ol>
+<p><img alt="" src="../pic/1-2-1.png" /></p>
+<ol>
+<li>Verify local route <strong>131.131.131.0/24</strong> is installed as OSPF route into the VPN 10 routing table. Navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; IP Route</strong></li>
+</ol>
+<p><img alt="" src="../pic/1-3-1.png" /></p>
+<ol>
+<li>Verify omp route <strong>131.131.131.0/24</strong> is installed on remote site. Navigate to <strong>Monitor &gt; Devices &gt; Site400-cE1 &gt; Real Time &gt; IP Route</strong></li>
+</ol>
+<p><img alt="" src="../pic/1-4-1.png" /></p>
+<ol>
+<li>
+<p>Verify omp routes being redistributed into OSPF and installed on <strong>Site300-Core-VPN10</strong> </p>
+<p>a. open <strong>mRemoteNG</strong> <img alt="" src="../pic/1-5-1.png" title="mRemoteNG" />from jumphost's desktop</p>
+<p>b. select <strong>Site300-Core-VPN10</strong> from the pre-configured Putty session</p>
+</li>
+</ol>
+<p><img alt="" src="../pic/1-5-2.png" />
+<span style="background-color:yellow"> Note: If you don't see pre-configured connections, check <strong>View-Connections</strong> </span>
+    c. Login with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong> </p>
+<p><img alt="" src="../pic/1-5-3.png" /></p>
+<pre><code>**Note the redistributed routes are seen as E2 routes with default metric**
+</code></pre>
+<ol>
+<li>
+<p>Add a Route Policy to set the OSPF metric of 1000 for prefixes redistributed from OMP</p>
+<p>a. Navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Localized Policy &gt; Route Policy</strong></p>
+</li>
+</ol>
+<p><img alt="" src="../pic/1-6-1.png" /></p>
+<pre><code>b. Route Policy **VIP18-Route-Policy** is pre-configured to set OSPF metric to 1000. Click the **...** to view the policy setting.
+</code></pre>
+<p><img alt="" src="../pic/1-6-2.png" /></p>
+<pre><code>c. To add the route policy into configuration. Navigate to **Configuration &gt; Policies &gt;  Localized Policy **,  select pre-configured policy **Site300-Local-Policy-v1** and Click the **...** ti Edit the policy.
+</code></pre>
+<p><img alt="" src="../pic/1-6-3.png" /></p>
+<pre><code>d. Select **Route Policy** then select **Add Route Policy** and **Import Existing**
 
+e. Select **VIP18-Route-Policy** from Policy drop-down, then **Import**
+</code></pre>
+<p><img alt="" src="../pic/1-6-4.png" /></p>
+<pre><code>f. Click **Save Policy Changes** to push configuration **Site300-cE1-v1**
+
+g. Now, let's apply the Route Policy to OSPF. Navigate to **Configuration &gt; Templates &gt; Feature Templates **
+
+h. Search feature template **VIP18-OSPF-Neighbor** and select **Edit**
+
+i. Under **REDISTRIBUTE** section, click the Pencil icon to update **omp** redistritbuion setting
+
+j. Select **Global** from drop-down of **Route Policy**, and configure **VIP18-Route-Policy**.
+
+**Note Make sure to enter the name correctly**
+</code></pre>
+<p><img alt="" src="../pic/1-6-5.png" /></p>
+<pre><code>k. Save the template change and push configuration to **Site300-cE1**
+</code></pre>
 
 
 
