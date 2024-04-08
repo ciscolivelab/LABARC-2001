@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#task-3-topology-policy" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -407,9 +412,38 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Centralized Policy - Hub&Spoke Topology
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Centralized Policy - Hub&Spoke Topology
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-3-topology-policy" class="md-nav__link">
+    Task 3 Topology Policy
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -454,6 +488,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-3-topology-policy" class="md-nav__link">
+    Task 3 Topology Policy
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -469,7 +518,28 @@
 
   <h1>Centralized Policy - Hub&Spoke Topology</h1>
 
-
+<h2 id="task-3-topology-policy">Task 3 Topology Policy</h2>
+<p>In this task, you are going use centralized policy to build Hub and Spoke topology with site 100 and site 200 as Hub sites, Site 300, Site 400 and Site 500 as spoke sites.  </p>
+<ol>
+<li>Verify the default full mesh topology by navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Tunnel</strong><br />
+<img alt="" src="../pic/3-1-1.png" />  </li>
+<li>Review the topology policy <strong>spoke-out</strong>. This topology policy allows tloc from hub sites; allows routes from hub sites; allows routes from remotes sites but set to hub's tlocs.<br />
+  a. Navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Centralized Policy &gt; Topology</strong><br />
+<img alt="" src="../pic/3-2-1.png" />
+  b. Select <strong>spoke-out</strong> and open in View mode. Review the TLOC rules and Route rules.<br />
+<img alt="" src="../pic/3-2-2.png" /><br />
+<img alt="" src="../pic/3-2-3.png" />  </li>
+<li>Apply topology policy <strong>spoke-out</strong> to spoke sites (300,400,500) on outbound direction.<br />
+  a. Navigate to <strong>Configuration &gt; Policies &gt; Centralized Policy</strong><br />
+  b. Open <strong>Central-Policy-v1</strong> in view mode<br />
+<img alt="" src="../pic/3-3-1.png" /><br />
+<img alt="" src="../pic/3-3-2.png" /><br />
+  c. <strong>Activate</strong> central policy <strong>Central-Policy-v1</strong> to push the configuration to vSmart controller.<br />
+<img alt="" src="../pic/3-3-3.png" />  </li>
+<li>Verify the hub &amp; spoke topology by navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Tunnel</strong><br />
+<img alt="" src="../pic/3-4-1.png" />
+<span style="background-color:yellow"> Question to think: How do you block tunnel between hub site 100 and site 200? </span>      </li>
+</ol>
 
 
 

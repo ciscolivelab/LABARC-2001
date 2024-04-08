@@ -597,18 +597,33 @@
   c. Scroll to the <strong>ACL/QoS </strong>section and configure <strong>VIP16_QoS_ACL</strong> as an ingress IPv4 ACL<br />
 <strong>Note make sure to enter the name correctly</strong><br />
 <img alt="" src="../pic/2-4-2.png" /><br />
-<img alt="" src="../pic/2-4-3.png" /><br />
-  d. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>. Type in <strong>Site100-cE2</strong> and <strong>Gigabitethernet3</strong> in the search bar. Open the interface feature template in Edit mode. 
-  e. Scroll to the <strong>ACL/QoS </strong>section and configure <strong>VIP16_QoS_ACL</strong> as an ingress IPv4 ACL<br />
-<strong>Note make sure to enter the name correctly</strong><br />
-  f. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>. Type in <strong>Site300-cE1</strong> and <strong>Gigabitethernet3</strong> in the search bar. Open the interface feature template in Edit mode. 
-  g. Scroll to the <strong>ACL/QoS </strong>section and configure <strong>VIP16_QoS_ACL</strong> as an ingress IPv4 ACL<br />
-<strong>Note make sure to enter the name correctly</strong>  </p>
+<img alt="" src="../pic/2-4-3.png" />  </p>
 </li>
 <li>
-<p>Apply QoS Map to </p>
+<p>Apply QoS Map to WAN interfaces of <strong>Site300-cE1</strong><br />
+  a. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>. Type in <strong>Site300-cE1</strong> and <strong>Gigabitethernet2</strong> in the search bar. Open it in edit mode.<br />
+  b. Scroll to the ACL/QoS section and configure <strong>VIP16_QoS_Map</strong> as QoS Map.<br />
+<strong>Note: make sure to enter the name correctly</strong><br />
+<img alt="" src="../pic/2-5-1.png" /><br />
+  c. Repeat the steps for <strong>Gigabitethernet1</strong>  </p>
 </li>
+<li>
+<p>Generate some traffic by initiating ping test from router <strong>Site300-Core-VPN10</strong>.  </p>
+</li>
+<li>Monitor the traffic assignment to each class in vManage. <strong>Monitor &gt; Devices &gt; Site300-cE1&gt; QoS</strong>. Select the WAN interface GigabitEthernet1 or GigabitEthernet2 and to set the graph to Real Time. You might want to change policy rate to pps for better flow identification.<br />
+<strong>Note: Depends on the destination IP you use for testing, Site300-cE1 might use GigabitEthernet1 or GigabitEthernet2</strong>  </li>
+<li>Send 1000 packets to <strong>10.10.1.100</strong> (Site100 LAN side router) with  </li>
+<li>DSCP 48  </li>
+<li>DSCP 41  </li>
+<li>DSCP 10  </li>
+<li>DSCP 0<br />
+Recall the mapping between classes and queues.<br />
+    Queue 0 = LLQ = FC Control (REAL-TIME) = DSCP 46, 48<br />
+    Queue 1 = WRR = FC STANDARD-DATA = DSCP 41<br />
+    Queue 2 = WRR = FC BEST-EFFORT = DSCP 10<br />
+    Queue 3 = WRR = FC DEFAULT-NO-DSCP = DSCP 0  </li>
 </ol>
+<p><img alt="" src="../pic/2-8-1.png" />  </p>
 
 
 
