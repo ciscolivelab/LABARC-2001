@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#task-4-application-aware-routing-policy" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -419,9 +424,52 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Centralized Policy - Application Aware Routing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Centralized Policy - Application Aware Routing
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-4-application-aware-routing-policy" class="md-nav__link">
+    Task 4 Application Aware Routing Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-to-think-in-a-scenario-where-both-aar-and-central-data-policy-match-the-packet-which-policy-takes-precedence" class="md-nav__link">
+     Question to think: In a scenario where both AAR and Central Data Policy match the packet, which policy takes precedence?? 
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulation-you-have-completed-the-whole-lab" class="md-nav__link">
+    Congratulation! You have completed the whole lab.
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -452,6 +500,35 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-4-application-aware-routing-policy" class="md-nav__link">
+    Task 4 Application Aware Routing Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-to-think-in-a-scenario-where-both-aar-and-central-data-policy-match-the-packet-which-policy-takes-precedence" class="md-nav__link">
+     Question to think: In a scenario where both AAR and Central Data Policy match the packet, which policy takes precedence?? 
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulation-you-have-completed-the-whole-lab" class="md-nav__link">
+    Congratulation! You have completed the whole lab.
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -467,7 +544,48 @@
 
   <h1>Centralized Policy - Application Aware Routing</h1>
 
-
+<h2 id="task-4-application-aware-routing-policy">Task 4 Application Aware Routing Policy</h2>
+<p>In this task, you are going to use centralized policy to define transport preference for different applications, and verify different application uses different transport paths.  </p>
+<ol>
+<li>
+<p>Review the AAR policy <strong>VPN10_AAR</strong>. This policy sets transport preference for 3 business applications, <strong>DSCP46</strong>, <strong>DSCP41-31-21</strong> and <strong>SIP</strong><br />
+<strong>Note application list and SLA list are pre-defined</strong><br />
+a.Navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Centralized Policy &gt; Traffic Policy</strong><br />
+<img alt="" src="../pic/4-1-0.png" /><br />
+b. Open <strong>VPN10_AAR</strong> in view mode<br />
+<img alt="" src="../pic/4-1-1.png" /><br />
+<strong>Note This rule matches on application source from prefix VPN10_Site300_Prefixes with DSCP 46. Prefer MPLS transport as long as the path meets SLA VIP09_Critical_Apps. If no path meets the SLA, follows routing to load sharing over all available paths</strong><br />
+<img alt="" src="../pic/4-1-2.png" /><br />
+<strong>Note This rule matches on application with DSCP 21 or DSCP 31 or DSCP 41, and use all paths that meets the SLA. If no path meets the SLA, follows routing to load sharing over all available paths</strong>
+<img alt="" src="../pic/4-1-3.png" /><br />
+<strong>Note This rule matches on application list VIP09_SIP. Prefer transport biz-internet as long as the path meets SLA VIP09_Critical_Apps. If no path meets the SLA, prefer MPLS transport.</strong>  </p>
+</li>
+<li>
+<p>Apply AAR policy <strong>VPN10_AAR</strong> to all sites on VPN10.<br />
+  a. Navigate to <strong>Configuration &gt; Policies &gt; Centralized Policy</strong><br />
+  b. Open <strong>Central-Policy-v1</strong> in edit mode<br />
+  c. Import <strong>VPN10_AAR</strong> policy<br />
+<img alt="" src="../pic/4-2-1.png" /><br />
+  d. Click <strong>Policy Application</strong> to Apply <strong>VPN10_AAR</strong> to <strong>All Sites</strong> <strong>VPN10</strong>
+<img alt="" src="../pic/4-2-2.png" /><br />
+<img alt="" src="../pic/4-2-3.png" /><br />
+  e. After <strong>Add</strong> the policy to all sites, <strong>Save Policy Changes</strong> to push configuration to vSmart controllers. </p>
+</li>
+<li>
+<p>Verify AAR policy<br />
+ a. Navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1&gt; Troubleshooting&gt; Simulate Flows</strong><br />
+<img alt="" src="../pic/4-3-1.png" /><br />
+ b. Run simulated flow with <strong>DSCP46</strong> to destination IP <strong>10.10.1.1</strong>.<br />
+<img alt="" src="../pic/4-3-2.png" /><br />
+ c. Run simulated flow with <strong>DSCP21</strong> to destination IP <strong>10.10.1.1</strong>.<br />
+<img alt="" src="../pic/4-3-3.png" /><br />
+ d. Run simulated <strong>SIP</strong> flow to destination IP <strong>10.10.1.1</strong>.<br />
+<img alt="" src="../pic/4-3-4.png" />  </p>
+</li>
+</ol>
+<h2 id="question-to-think-in-a-scenario-where-both-aar-and-central-data-policy-match-the-packet-which-policy-takes-precedence"><span style="background-color:yellow"> Question to think: In a scenario where both AAR and Central Data Policy match the packet, which policy takes precedence?? </span></h2>
+<h2 id="congratulation-you-have-completed-the-whole-lab">Congratulation! You have completed the whole lab.</h2>
+<p><a href="JAVASCRIPT:scroll(0,0)" style="color:blue">Back to Top</a></p>
 
 
 
