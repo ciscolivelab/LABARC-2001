@@ -605,25 +605,26 @@
   b. Scroll to the ACL/QoS section and configure <strong>VIP16_QoS_Map</strong> as QoS Map.<br />
 <strong>Note: make sure to enter the name correctly</strong><br />
 <img alt="" src="../pic/2-5-1.png" /><br />
-  c. Repeat the steps for <strong>Gigabitethernet1</strong>  </p>
+  c. <span style="background-color:yellow"> Repeat the steps for <strong>Gigabitethernet1</strong> </span>  </p>
 </li>
 <li>
 <p>Generate some traffic by initiating ping test from router <strong>Site300-Core-VPN10</strong>.  </p>
 </li>
 <li>Monitor the traffic assignment to each class in vManage. <strong>Monitor &gt; Devices &gt; Site300-cE1&gt; QoS</strong>. Select the WAN interface GigabitEthernet1 or GigabitEthernet2 and to set the graph to Real Time. You might want to change policy rate to pps for better flow identification.<br />
 <strong>Note: Depends on the destination IP you use for testing, Site300-cE1 might use GigabitEthernet1 or GigabitEthernet2</strong>  </li>
-<li>Send 1000 packets to <strong>10.10.1.100</strong> (Site100 LAN side router) with  </li>
-<li>DSCP 48  </li>
-<li>DSCP 41  </li>
-<li>DSCP 10  </li>
-<li>DSCP 0<br />
+<li>Log into <strong>Site300-Core-VPN10</strong> and send 1000 packets to <strong>10.10.1.100</strong> (Site100 LAN side router) with<br />
+  a. DSCP 48<br />
+  b. DSCP 41<br />
+  c. DSCP 10<br />
+  d. DSCP 0<br />
 Recall the mapping between classes and queues.<br />
-    Queue 0 = LLQ = FC Control (REAL-TIME) = DSCP 46, 48<br />
-    Queue 1 = WRR = FC STANDARD-DATA = DSCP 41<br />
-    Queue 2 = WRR = FC BEST-EFFORT = DSCP 10<br />
-    Queue 3 = WRR = FC DEFAULT-NO-DSCP = DSCP 0  </li>
+<div class="highlight"><pre><span></span><code>Queue 0 = LLQ = FC Control (REAL-TIME) = DSCP 46, 48  
+Queue 1 = WRR = FC STANDARD-DATA = DSCP 41  
+Queue 2 = WRR = FC BEST-EFFORT = DSCP 10  
+Queue 3 = WRR = FC DEFAULT-NO-DSCP = DSCP 0  
+</code></pre></div>
+  <img alt="" src="../pic/2-8-1.png" />  </li>
 </ol>
-<p><img alt="" src="../pic/2-8-1.png" />  </p>
 
 
 
