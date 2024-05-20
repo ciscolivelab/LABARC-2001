@@ -632,13 +632,13 @@
 <p><strong>Depends on the destination IP you use for testing, Site300-cE1 might use GigabitEthernet1 or GigabitEthernet2</strong><br />
 8. Log into <strong>Site300-Core-VPN10</strong> and send 1000 packets to <strong>10.10.1.100</strong> (Site100 LAN side router) with<br />
   a. DSCP 48<br />
-  'Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 48'
+  Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 48<br />
   b. DSCP 41<br />
-  Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 41
+  Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 41<br />
   c. DSCP 10<br />
-  Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 10 
+  Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 10 <br />
   d. DSCP 0<br />
-  Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 0
+  Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 0<br />
 Recall the mapping between classes and queues.<br />
 <div class="highlight"><pre><span></span><code>Queue 0 = LLQ = FC Control (REAL-TIME) = DSCP 46, 48  
 Queue 1 = WRR = FC STANDARD-DATA = DSCP 41  
