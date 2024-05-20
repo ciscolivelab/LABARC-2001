@@ -603,9 +603,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p><strong>make sure to enter the name correctly</strong>  </p>
 </div>
-<p><strong>make sure to enter the name correctly</strong><br />
-<img alt="" src="../pic/2-4-2.png" /><br />
+<p><img alt="" src="../pic/2-4-2.png" /><br />
 <img alt="" src="../pic/2-4-3.png" />  </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -618,9 +618,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p><strong>make sure to enter the name correctly</strong>  </p>
 </div>
-<p><strong>make sure to enter the name correctly</strong><br />
-<img alt="" src="../pic/2-5-1.png" /><br />
+<p><img alt="" src="../pic/2-5-1.png" /><br />
   c. <span style="background-color:yellow"> Repeat the steps for <strong>Gigabitethernet1</strong> </span>  </p>
 <ol>
 <li>Generate some traffic by initiating ping test from router <strong>Site300-Core-VPN10</strong>.  </li>
@@ -628,9 +628,10 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p><strong>Depends on the destination IP you use for testing, Site300-cE1 might use GigabitEthernet1 or GigabitEthernet2</strong>  </p>
 </div>
-<p><strong>Depends on the destination IP you use for testing, Site300-cE1 might use GigabitEthernet1 or GigabitEthernet2</strong><br />
-8. Log into <strong>Site300-Core-VPN10</strong> and send 1000 packets to <strong>10.10.1.100</strong> (Site100 LAN side router) with<br />
+<ol>
+<li>Log into <strong>Site300-Core-VPN10</strong> and send 1000 packets to <strong>10.10.1.100</strong> (Site100 LAN side router) with<br />
   a. DSCP 48<br />
   Site300-Core-VPN10#ping 10.10.1.100 repeat 1000 dscp 48<br />
   b. DSCP 41<br />
@@ -645,7 +646,8 @@ Queue 1 = WRR = FC STANDARD-DATA = DSCP 41
 Queue 2 = WRR = FC BEST-EFFORT = DSCP 10  
 Queue 3 = WRR = FC DEFAULT-NO-DSCP = DSCP 0  
 </code></pre></div>
-  <img alt="" src="../pic/2-8-1.png" />  </p>
+  <img alt="" src="../pic/2-8-1.png" />  </li>
+</ol>
 
 
 
