@@ -559,8 +559,9 @@
   <h1>Localized Policy - OSPF</h1>
 
 <h2 id="task-1-ospf-policy">Task 1 OSPF Policy</h2>
-<p>In this task, you are going use localized route policy to set OSPF metrics, and another route policy block default route. </p>
+<p>In this task, you are going use localized route policy to set OSPF metrics, and another localized route policy block default route. </p>
 <h3 id="set-ospf-metric">Set OSPF Metric</h3>
+<p>Log in <a href="https://vmanage.dcloud.cisco.com:8443">SD-WAN Manager</a> from browser with <strong>username:admin password:C1sco12345</strong>  </p>
 <ol>
 <li>In Site 300, OSPF is pre-configured between core router <strong>Site300-Core-VPN10</strong> and <strong>Site300-cE1</strong> on service side. Mutual redistribution beteen OMP and OSPF is also enabled.  </li>
 <li>Verify the OSPF neighbor by navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; OSPF Neighbors</strong><br />
@@ -597,7 +598,7 @@
   k. Save the template change and push configuration to <strong>Site300-cE1</strong><br />
   l. Log into <strong>Site300-Core-VPN10</strong> with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong><br />
 <img alt="" src="../pic/1-6-6.png" /><br />
-**Note Now the OSPF E2 route has OSPF matric 1000</li>
+<strong>Note Now the OSPF E2 route has OSPF matric 1000</strong></li>
 </ol>
 <h3 id="block-default-on-service-side">Block Default On Service Side</h3>
 <p>As show below <strong>Site300-Core-VPN10</strong> is incorrectly advertising default route to <strong>Site300-cE1</strong>. Next you are going to use local Route Policy to block default route from service side.<br />
@@ -607,21 +608,33 @@
   a. Click <strong>Add Route Policy</strong> to create new policy<br />
   b. Create new Route Policy <strong>OSPF-LAN</strong> with two sequence rule as show below<br />
 <img alt="" src="../pic/1-7-1.png" /><br />
+     sequence 1, match <strong>Address</strong> default, set Actions to Reject<br />
+     sequence 2 match everything, set Actions to Accept<br />
   c. To add <strong>OSPF-LAN</strong> into configuration. Navigate to <strong>Configuration &gt; Policies &gt;  Localized Policy </strong>,  select pre-configured policy <strong>Site300-Local-Policy-v1</strong> and Click the <strong>...</strong> ti Edit the policy.<br />
   d. Select <strong>Route Policy</strong> and <strong>Add Route Policy</strong> drop-down to <strong>Import Existing</strong>
   e. Select <strong>OSPF-LAN</strong> from Policy drop-down, then <strong>Import</strong><br />
 <img alt="" src="../pic/1-7-2.png" /><br />
-  f. Click <strong>Save Policy Changes</strong> to push configuration to <strong>Site300-cE1-v1</strong><br />
+  f. Click <strong>Save Policy Changes</strong> to push configuration to <strong>Site300-cE1-v1</strong>  </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Wait after push configuration is competed <br />
   g. Now, let's apply the Route Policy to OSPF. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates </strong><br />
   h. Search feature template <strong>VIP18-OSPF-Neighbor</strong> and select <strong>Edit</strong><br />
   i. Under <strong>ADVANCED</strong> section, configure <strong>OSPF-LAN</strong> as global value for <strong>Policy Name</strong>
-<img alt="" src="../pic/1-7-3.png" /><br />
-<strong>Note Make sure to enter the name correctly</strong><br />
+<img alt="" src="../pic/1-7-3.png" />  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p><strong>Make sure to enter the name correctly</strong> 
   j. Save the template change and push configuration to <strong>Site300-cE1</strong><br />
   k. Verify default route is blocked from service side. Navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; IP Route</strong>
-<img alt="" src="../pic/1-7-4.png" />  <br />
-<span style="background-color:yellow"> Question to think: Can you think alternate options to prevent the default route being advertised to OMP? </span> </li>
-</ol>
+<img alt="" src="../pic/1-7-4.png" />    </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+</div>
+<p><strong>Question to think: Can you think alternate options to prevent the default route being advertised to OMP?</strong></p>
 
 
 
