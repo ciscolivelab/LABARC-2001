@@ -573,12 +573,16 @@
 <li>Verify omp routes being redistributed into OSPF and installed on <strong>Site300-Core-VPN10</strong><br />
     a. open <strong>mRemoteNG</strong> <img alt="" src="../pic/1-5-1.png" title="mRemoteNG" />from jumphost's desktop<br />
     b. select <strong>Site300-Core-VPN10</strong> from the pre-configured Putty session<br />
-<img alt="" src="../pic/1-5-2.png" /><br />
-<span style="background-color:yellow"> Note: If you don't see pre-configured connections, check <strong>View-Connections</strong> </span><br />
-   c. Log in with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong><br />
+<img alt="" src="../pic/1-5-2.png" />  </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don't see pre-configured connections, check <strong>View-Connections</strong>  </p>
+</div>
+<p>c. Log in with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong><br />
 <img alt="" src="../pic/1-5-3.png" /><br />
-<strong>Note the redistributed routes are seen as E2 routes with default metric</strong>  </li>
-<li>Add a Route Policy to set the OSPF metric of 1000 for prefixes redistributed from OMP<br />
+<strong>Note the redistributed routes are seen as E2 routes with default metric</strong><br />
+6. Add a Route Policy to set the OSPF metric of 1000 for prefixes redistributed from OMP<br />
   a. Navigate to <strong>Configuration &gt; Policies &gt; Custom Options &gt; Localized Policy &gt; Route Policy</strong><br />
 <img alt="" src="../pic/1-6-1.png" /><br />
   b. Route Policy <strong>VIP18-Route-Policy</strong> is pre-configured to set OSPF metric to 1000. Click the <strong>...</strong> to view the policy setting.<br />
@@ -592,14 +596,16 @@
   g. Now, let's apply the Route Policy to OSPF. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates </strong><br />
   h. Search feature template <strong>VIP18-OSPF-Neighbor</strong> and select <strong>Edit</strong><br />
   i. Under <strong>REDISTRIBUTE</strong> section, click the Pencil icon to update <strong>omp</strong> redistritbuion setting<br />
-  j. Select <strong>Global</strong> from drop-down of <strong>Route Policy</strong>, and configure <strong>VIP18-Route-Policy</strong>.<br />
-<strong>Note Make sure to enter the name correctly</strong><br />
-<img alt="" src="../pic/1-6-5.png" /><br />
+  j. Select <strong>Global</strong> from drop-down of <strong>Route Policy</strong>, and configure <strong>VIP18-Route-Policy</strong>.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Make sure to enter the name correctly</strong>  </p>
+</div>
+<p><img alt="" src="../pic/1-6-5.png" /><br />
   k. Save the template change and push configuration to <strong>Site300-cE1</strong><br />
   l. Log into <strong>Site300-Core-VPN10</strong> with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong><br />
 <img alt="" src="../pic/1-6-6.png" /><br />
-<strong>Note Now the OSPF E2 route has OSPF matric 1000</strong></li>
-</ol>
+<strong>Note Now the OSPF E2 route has OSPF matric 1000</strong></p>
 <h3 id="block-default-on-service-side">Block Default On Service Side</h3>
 <p>As show below <strong>Site300-Core-VPN10</strong> is incorrectly advertising default route to <strong>Site300-cE1</strong>. Next you are going to use local Route Policy to block default route from service side.<br />
 <img alt="" src="../pic/1-6-7.png" />  </p>
@@ -618,9 +624,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p><strong>Wait after push configuration is competed</strong>   </p>
 </div>
-<p>Wait after push configuration is competed <br />
-  g. Now, let's apply the Route Policy to OSPF. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates </strong><br />
+<p>g. Now, let's apply the Route Policy to OSPF. Navigate to <strong>Configuration &gt; Templates &gt; Feature Templates </strong><br />
   h. Search feature template <strong>VIP18-OSPF-Neighbor</strong> and select <strong>Edit</strong><br />
   i. Under <strong>ADVANCED</strong> section, configure <strong>OSPF-LAN</strong> as global value for <strong>Policy Name</strong>
 <img alt="" src="../pic/1-7-3.png" />  </p>
