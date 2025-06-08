@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../login/">
+        <link rel="prev" href="../topology/">
       
       
-        <link rel="next" href="../ospf/">
+        <link rel="next" href="../access/">
       
       
       <link rel="icon" href="../pic/cisco_logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Lab Crendential - Cisco Live 2025: LABARC-2001</title>
+        <title>Pod Login - Cisco Live 2025: LABARC-2001</title>
       
     
     
@@ -90,7 +90,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab Crendential
+              Pod Login
             
           </span>
         </div>
@@ -174,10 +174,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../about/" class="md-tabs__link">
           
   
@@ -192,11 +194,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../access/" class="md-tabs__link">
         
   
     
@@ -283,23 +283,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -311,7 +316,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Lab Overview
@@ -366,10 +371,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../login/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -379,6 +391,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -395,17 +408,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -415,7 +421,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -586,162 +591,20 @@
 
 
 
-  <h1>Lab Crendential</h1>
+  <h1>Pod Login</h1>
 
-<p>Lab Access</p>
-<p>Below table provides the IP addresses and credentials for the devices used in this lab:</p>
-<p><strong>SSH Access</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Device</th>
-<th style="text-align: center;">IP</th>
-<th style="text-align: center;">Username</th>
-<th style="text-align: right;">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">SD-WAN Manager</td>
-<td style="text-align: center;"><a href="https://vmanage.dcloud.cisco.com:8443">https://vmanage.dcloud.cisco.com:8443</a></td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">C1sco12345</td>
-</tr>
-<tr>
-<td style="text-align: right;">DCI-Router</td>
-<td style="text-align: center;">198.18.133.200:19009</td>
-<td style="text-align: center;">cisco</td>
-<td style="text-align: right;">cisco</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site100-Core-VPN10</td>
-<td style="text-align: center;">198.18.133.200:19010</td>
-<td style="text-align: center;">cisco</td>
-<td style="text-align: right;">cisco</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site100-CE1</td>
-<td style="text-align: center;">198.18.133.200:19007</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site100-CE2</td>
-<td style="text-align: center;">198.18.133.200:19008</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site200-CE1</td>
-<td style="text-align: center;">198.18.133.200:19011</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site200-CE2</td>
-<td style="text-align: center;">198.18.133.200:19012</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site300-Core-VPN10</td>
-<td style="text-align: center;">198.18.133.200:19014</td>
-<td style="text-align: center;">cisco</td>
-<td style="text-align: right;">cisco</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site300-CE1</td>
-<td style="text-align: center;">198.18.133.200:19015</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site400-CE1</td>
-<td style="text-align: center;">198.18.133.200:19021</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site500-CE1</td>
-<td style="text-align: center;">198.18.133.200:19026</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">Site500-CE1</td>
-<td style="text-align: center;">198.18.133.200:19027</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">vManage-console</td>
-<td style="text-align: center;">198.18.133.200:19001</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">C1sco12345</td>
-</tr>
-<tr>
-<td style="text-align: right;">vSmart1</td>
-<td style="text-align: center;">198.18.133.200:19003</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-<tr>
-<td style="text-align: right;">vSmart2</td>
-<td style="text-align: center;">198.18.133.200:19005</td>
-<td style="text-align: center;">admin</td>
-<td style="text-align: right;">admin</td>
-</tr>
-</tbody>
-</table>
-<p>**VNC Access **</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Device</th>
-<th style="text-align: center;">IP</th>
-<th style="text-align: center;">Username</th>
-<th style="text-align: center;">Password</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">Site300-Ubuntu-VPN10</td>
-<td style="text-align: center;">198.18.133.200:30500</td>
-<td style="text-align: center;">ubuntu</td>
-<td style="text-align: center;">viptela</td>
-</tr>
-<tr>
-<td style="text-align: center;">Site300-Ubuntu-VPN12</td>
-<td style="text-align: center;">198.18.133.200:30501</td>
-<td style="text-align: center;">ubuntu</td>
-<td style="text-align: center;">viptela</td>
-</tr>
-<tr>
-<td style="text-align: center;">Site400-Ubuntu-VPN10</td>
-<td style="text-align: center;">198.18.133.201:30503</td>
-<td style="text-align: center;">ubuntu</td>
-<td style="text-align: center;">viptela</td>
-</tr>
-<tr>
-<td style="text-align: center;">Site400-Ubuntu-VPN12</td>
-<td style="text-align: center;">198.18.133.201:30502</td>
-<td style="text-align: center;">ubuntu</td>
-<td style="text-align: center;">viptela</td>
-</tr>
-<tr>
-<td style="text-align: center;">Site500-Ubuntu-VPN10</td>
-<td style="text-align: center;">198.18.133.201:30500</td>
-<td style="text-align: center;">ubuntu</td>
-<td style="text-align: center;">viptela</td>
-</tr>
-<tr>
-<td style="text-align: center;">TRex2-VPN10</td>
-<td style="text-align: center;">198.18.133.200:30503</td>
-<td style="text-align: center;">ubuntu</td>
-<td style="text-align: center;">viptela</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>You can access the pod from workstation's browser. Locate this lab <strong>LABARC-2001</strong> and click <strong>Explore</strong>. </li>
+</ul>
+<p><img alt="" src="../pic/login-1.png" /></p>
+<ul>
+<li>Fill in your email address, check <strong>terms &amp; conditions</strong> and continue. </li>
+</ul>
+<p><img alt="" src="../pic/login-2.png" /></p>
+<ul>
+<li>On the login page, click <strong>Remote Desktop</strong> to access workstop over WebRDP</li>
+</ul>
+<p><img alt="" src="../pic/login-3.png" /></p>
 
 
 
@@ -777,7 +640,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../login/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pod Login">
+          <a href="../topology/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab Topology">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -787,20 +650,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Pod Login
+                Lab Topology
               </div>
             </div>
           </a>
         
         
           
-          <a href="../ospf/" class="md-footer__link md-footer__link--next" aria-label="Next: Localized Policy - OSPF">
+          <a href="../access/" class="md-footer__link md-footer__link--next" aria-label="Next: Lab Crendential">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Localized Policy - OSPF
+                Lab Crendential
               </div>
             </div>
             <div class="md-footer__button md-icon">

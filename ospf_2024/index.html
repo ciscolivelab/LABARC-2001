@@ -361,6 +361,28 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../login/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pod Login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -599,9 +621,9 @@
   <h1>Ospf 2024</h1>
 
 <h2 id="task-1-ospf-policy">Task 1 OSPF Policy</h2>
-<p>In this task, you are going use localized route policy to set OSPF metrics, and another localized route policy block default route. </p>
+<p>In this task, you will configure a localized control policy on the SD-WAN Edge router to advertise OSPF routes into the SD-WAN overlay.</p>
 <h3 id="set-ospf-metric">Set OSPF Metric</h3>
-<p>Log in <a href="https://vmanage.dcloud.cisco.com:8443">SD-WAN Manager</a> from browser with <strong>username:admin password:C1sco12345</strong>  </p>
+<p>Log in <a href="https://vmanage.dcloud.cisco.com:8443">SD-WAN Manager</a> from browser with <strong>username</strong>:admin <strong>password</strong>:C1sco12345  </p>
 <ol>
 <li>In Site 300, OSPF is pre-configured between core router <strong>Site300-Core-VPN10</strong> and <strong>Site300-cE1</strong> on service side. Mutual redistribution beteen OMP and OSPF is also enabled.  </li>
 <li>Verify the OSPF neighbor by navigate to <strong>Monitor &gt; Devices &gt; Site300-cE1 &gt; Real Time &gt; OSPF Neighbors</strong><br />
@@ -643,7 +665,7 @@
 </div>
 <p><img alt="" src="../pic/1-6-5.png" /><br />
   k. Save the template change and push configuration to <strong>Site300-cE1</strong><br />
-  l. Log into <strong>Site300-Core-VPN10</strong> with <strong>username:cisco</strong> &amp; <strong>password:cisco</strong>. Run command <strong>show ip route</strong><br />
+  l. Log into <strong>Site300-Core-VPN10</strong> with username:<strong>cisco</strong> &amp; password:<strong>cisco</strong>. Run command <strong>show ip route</strong><br />
 <img alt="" src="../pic/1-6-6.png" /><br />
 <strong>Note Now the OSPF E2 route has OSPF metric 1000</strong></p>
 <h3 id="block-default-on-service-side">Block Default On Service Side</h3>
